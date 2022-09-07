@@ -1,0 +1,37 @@
+#include <iomanip>
+#include <iostream>
+#include <stdlib.h>
+#include <time.h>
+using std::cout;
+using std::endl;
+
+
+int main()
+{
+	int iSecret, iGuess;
+	int Attempts = 0;
+	srand(time(NULL));
+	iSecret = rand() % 100 + 1;
+
+
+	do {
+		std::cin >> iGuess;
+		if (iSecret < iGuess) {
+			std::cout << "deine Zahl ist zu gross!" << endl;
+		}
+		else if (iSecret > iGuess) {
+			std::cout << "deine Zahl ist zu klein!" << endl;
+		}
+		if (Attempts < 10) {
+			++ Attempts;
+		}
+		if (Attempts == 10)
+		{
+			std::cout << "\nKeine Versuche uebrig, deine Zähl waere " << iSecret << "\nVerloren :/" << endl;
+		}
+	} while (iSecret != iGuess);  {
+		 std::cout << "\nGlueckwunsch du hast gewonnen : D!" << endl;
+	}
+}
+
+
