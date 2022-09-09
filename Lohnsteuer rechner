@@ -3,138 +3,86 @@
 #include <string>
 using namespace std;
 
-using std::cout; using std::setw;
-using std::endl; using std::string;
 
-
- 
- 
-int 
-main () 
+int
+main()
 {
-  
- 
-float BGehalt;
-  
- 
-float LS;			/* Lohnsteuer */
-  
- 
-float KS;			/* KirchenSteuer */
-  
- 
-float KV;			/* Krankenversicherung */
-  
- 
-float PV;			/* Pflegeversicherung */
-  
- 
-float RV;			/*Rentenversicherung */
-  
- 
-float AV;			/*Arbeitslosen verischerung */
-  
- 
-float NV;			/* Netto verdienst */
 
 
-std::string Vorname;
-std::string Nachname;
+    float BGehalt;
+    float LS;			/* Lohnsteuer */
+    float KS = 0;			/* KirchenSteuer */
+    float KV;			/* Krankenversicherung */
+    float PV;			/* Pflegeversicherung */
+    float RV;			/*Rentenversicherung */
+    float AV;			/*Arbeitslosen verischerung */
+    float NV;			/* Netto verdienst */
+    bool KSAbfrage = 0;
+    string Vorname;
+    string Nachname;
 
-cout << "Lohnsteuer Rechner von Klaas Precht\n" << endl;
+    cout << "Lohnsteuer Rechner von Klaas Precht\n" << endl;
 
-std::cout << "Vorname?" << endl;
-std::cin >> Vorname;
+    cout << "Vorname?" << endl;
+    cin >> Vorname;                 // fragt Vorname ab 
 
-std::cout << "Nachname?" << endl;
-std::cin >> Nachname;
+    cout << "Nachname?" << endl;
+    cin >> Nachname;
 
-cout << "Bitte geben Sie Ihr Brutto Gehalt ein" << endl;
-cin >> BGehalt;
+    cout << "Bitte geben Sie Ihr Brutto Gehalt ein" << endl;
+    cin >> BGehalt;
 
- 
-LS = BGehalt * 25 / 100;
-  
- 
-KS = LS * 9 / 100;
-  
- 
-KV = BGehalt * 14.6 / 100 / 2;
-  
- 
-PV = BGehalt * 3.3 / 100 / 2;
-  
- 
-RV = BGehalt * 18.6 / 100 / 2;
-  
- 
-AV = BGehalt * 2.4 / 100 / 2;
-  
- 
-NV = BGehalt - LS - KS - KV - PV - RV - AV;
-  
- 
- cout <<
+    cout << "Zahlen Sie Kirchensteuern? \n1 Fuer Ja und 0 fuer Nein\n";
+    cin >> KSAbfrage;
+
+
+    LS = BGehalt * 25 / 100;
+    KV = BGehalt * 14.6 / 100 / 2;
+    PV = BGehalt * 3.3 / 100 / 2;
+    RV = BGehalt * 18.6 / 100 / 2;
+    AV = BGehalt * 2.4 / 100 / 2;
+    NV = BGehalt - LS - KS - KV - PV - RV - AV;
+
+
+    if (KSAbfrage >= 1) { // Fragt die Kirchensteuer ab
+
+        KS = LS * 9 / 100;
+    }
+    else
+    {
+        KS = 0;
+    }
+
+
+
+    cout << setw(30) <<"" << Vorname << " " << Nachname << "'s Lohnsteuer"  << endl;
     
-"************************* Lohnsteuer ************************* \n\n" << Vorname << " " << Nachname << "\n"
-    
- <<endl;
- cout << std::setw(20)<< endl;
-  
- 
-cout << "Gesamtgehalt Brutto:" << std::
-    
-setprecision (3)<< fixed << setw(39) << BGehalt << " EUR\n" << endl;
+    cout << setw(10) << "**************************************************************************************\n" << endl;
 
-  
- 
-cout << "Steuerliche Abzuege:" << endl;
-  
- 
-cout << "Lohnsteuer:" << std::
-    
-setprecision (2) << fixed << setw(48) <<  LS << " EUR" << endl;
-  
- 
-cout << "Kirchensteuer:" << std::
-    setprecision (2) << fixed << setw(45) <<  KS << " EUR" << std::
-right << endl;
-  
- 
-cout << "Steuerliche Abzuege (gesamt):" << std::
-    
-setprecision (2) << fixed << setw(30) << LS + KS << " EUR \n" << endl;
+    cout << setw(10) << "" << setw(30) << left << "Gesamtgehalt Brutto: " << setw(10) << right << setprecision(2) << fixed << setw(42) << BGehalt<< " EUR" << endl;
 
-cout << "---------------------------------------------------------------" << endl;
-  
- 
-cout << "Krankenversicherung:" << std::
-    
-setprecision (2) << fixed << setw(39) << KV << " EUR" << endl;
-  
- 
-cout << "Pflegeversicherung:" << std::
-    
-setprecision (2) << fixed << setw(40) << PV << " EUR" << endl;
-  
- 
-cout << "Rentenversicherung:" << std::
-    
-setprecision (2) << fixed << setw(40) << RV << " EUR" << endl;
-  
- 
-cout << "Arbeitslosenversicherung:" << std::setprecision (2) << fixed << setw(34) << AV << " EUR" << endl;
-  
- 
-cout << "sozialversicherungsrechtliche Abzuege (gesamt):" <<
-    
-setprecision (2) << fixed << setw(12) << KV + PV + RV + AV << " EUR" << endl;
+    cout << setw(10) << "" << setw(30) << left << "Sterulicheabzuege " << setw(10) << right << setprecision(2) << fixed << setw(42) << endl;
 
-cout << "---------------------------------------------------------------" << endl;
-  
- 
-cout << "Netto Verdienst: " << setprecision (2) << fixed << setw(42) << NV << " EUR" <<
-    endl;
+    cout << setw(10) << "" << setw(30) << left << "Lohnsteuer: " << setw(10) << right << setprecision(2) << fixed << setw(42) << LS << " EUR" << endl;
 
- 
-} 
+    cout << setw(10) << "" << setw(30) << left << "Kirchenstuer " << setw(10) << right << setprecision(2) << fixed << setw(42) << KS << " EUR" << endl;
+
+    cout << setw(10) << "" << setw(30) << left << "Steuerliche Abzuege: " << setw(10) << right << setprecision(2) << fixed << setw(42) << LS + KS  << " EUR" << endl;
+
+    cout << "--------------------------------------------------------------------------------------" << endl;
+
+    cout << setw(10) << "" << setw(30) << left << "Krankenversicherung: " << setw(10) << right << setprecision(2) << fixed << setw(42) << KV << " EUR" << endl;
+
+    cout << setw(10) << "" << setw(30) << left << "Pflegeversicherung:" << setw(10) << right << setprecision(2) << fixed << setw(42) << PV << " EUR" << endl;
+
+    cout << setw(10) << "" << setw(30) << left << "Rentenversicherung:" << setw(10) << right << setprecision(2) << fixed << setw(42) << RV << " EUR" << endl;
+
+    cout << setw(10) << "" << setw(30) << left << "Arbeitslosenversicherung:" << setw(10) << right << setprecision(2) << fixed << setw(42) << AV << " EUR" << endl;
+
+    cout << setw(10) << "" << setw(30) << left << "Sozialversicherungsrechtliche Abzuege:" << setw(10) << right << setprecision(2) << fixed << setw(35) << KV + PV + RV + AV << "EUR" << endl;
+
+    cout << "--------------------------------------------------------------------------------------" << endl;
+
+    cout << setw(10) << "" << setw(30) << left << "Netto Verdienst:" << setw(10) << right << setprecision(2) << fixed << setw(42) << NV << " EUR" << endl;
+
+}
