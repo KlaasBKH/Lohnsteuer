@@ -4,22 +4,42 @@
 #include <fstream>	
 #include <iterator>	
 
-
-
 using namespace std;
 
-int main()
+string print_menu()
 {
-	vector<string> voc_german;
-	vector<string> voc_spanish;
-
 	cout << "vokabeltrainer\n";
 	cout << "BItte treffe eine Auswahl:\n";
 	cout << "(1) Neue Vokabel hinzufügen;\n";
 	cout << "(2) Vokabeltest starten\n";
 	string option;
 	cin >> option;
+	return option;
+}
+
+int main()
+{
+	vector<string> voc_german;
+	vector<string> voc_spanish;
+
+	ifstream in("C:\\Users\\Klaas\\source\\repos\\Vokabeltrainer2\\voc_german.txt");
+	string str;
+	while (getline(in, str))
+	{
+		if (str.size() > 0)
+			voc_german.push_back(str);
+	}
 	
+	ifstream in2("C:\\Users\\Klaas\\source\\repos\\Vokabeltrainer2\\voc_spanish.txt");
+	while (getline(in2, str))
+	{
+		if (str.size() > 0)
+			voc_spanish.push_back(str);
+	}
+
+	print_menu();
+	string option = print_menu();
+
 	if (option == "1") {
 		cout << "welche Vokabel (Deutsch)?";
 		string german_word;
@@ -34,11 +54,11 @@ int main()
 		cout << "Hinzugefügte Vokabel: " + to_string(voc_german.size());
 
 		//Deutsche Vokabeln speichern
-		ofstream output_file("./voc_german.txt");
+		ofstream output_file("C:\\Users\\Klaas\\source\\repos\\Vokabeltrainer2\\voc_german.txt");
 		ostream_iterator<string> output_iterator(output_file, "\n");
 		copy(voc_german.begin(), voc_german.end(), output_iterator);
 
-		ofstream output_file2("./voc_spanish.txt");
+		ofstream output_file2("C:\\Users\\Klaas\\source\\repos\\Vokabeltrainer2\\voc_spanish.txt");
 		ostream_iterator<string> output_iterator2(output_file2, "\n");
 		copy(voc_spanish.begin(), voc_spanish.end(), output_iterator2);
 
