@@ -18,10 +18,10 @@ int main()
 		if (Kapital, Zinssatz <= 0) {
 			cout << "Das funktioniert nicht, bitte einen neuen Wert eingeben." << endl;
 		}
-
-		Prozentsatz = Zinssatz * 100 / Kapital;
-		cout << "Ihr Prozentsatz betraegt :" << Prozentsatz << endl;
-
+		else {
+			Prozentsatz = Zinssatz * 100 / Kapital;
+			cout << "Ihr Prozentsatz betraegt : " << Prozentsatz << "%" << endl;
+		}
 
 
 	} while (Kapital, Zinssatz <= 0);
