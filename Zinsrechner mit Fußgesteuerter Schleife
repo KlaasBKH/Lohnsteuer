@@ -1,28 +1,35 @@
 #include <iostream>
-#include <iomanip>
 using namespace std;
 
-int main()
-
-{
-	int Kapital;
-	float Zinssatz;
-	float Prozentsatz;
-	do {
-		cout << "Bitte Kapital und Zinssatz eigeben" << endl;
-		cout << "Kapital:	";
-		cin >> Kapital;
-		cout << "Zinssatz:	";
-		cin >> Zinssatz;
-
-		if (Kapital, Zinssatz <= 0) {
-			cout << "Das funktioniert nicht, bitte einen neuen Wert eingeben." << endl;
-		}
-		else {
-			Prozentsatz = Zinssatz * 100 / Kapital;
-			cout << "Ihr Prozentsatz betraegt : " << Prozentsatz << "%" << endl;
-		}
-
-
-	} while (Kapital, Zinssatz <= 0);
+void Aufforderung() {
+	cout << "Bitte geben Sie eine Zahl ein" << endl;
+	cout << "Diese Zahl muss ein Integerwert sein." << endl;
 }
+void Fehlermeldung()
+{
+	cout << "ACHTUNG: Falsche Eingabe" << endl;
+}
+bool Pruefung(int Wert) {
+	if (Wert < 0 || Wert > 100)
+	{
+		Fehlermeldung();
+		return false;
+	}
+	return true;
+}
+
+
+
+int main()
+{
+	int a, b;
+	
+	Aufforderung();
+	do cin >> a; while (Pruefung(a) == false);
+
+
+	Aufforderung();
+	do cin >> b; while (Pruefung(b) == false);
+
+}
+ 
