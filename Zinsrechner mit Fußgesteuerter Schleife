@@ -1,0 +1,28 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+
+{
+	int Kapital;
+	float Zinssatz;
+	float Prozentsatz;
+	do {
+		cout << "Bitte Kapital und Zinssatz eigeben" << endl;
+		cout << "Kapital:	";
+		cin >> Kapital;
+		cout << "Zinssatz:	";
+		cin >> Zinssatz;
+
+		if (Kapital, Zinssatz <= 0) {
+			cout << "Das funktioniert nicht, bitte einen neuen Wert eingeben." << endl;
+		}
+
+		Prozentsatz = Zinssatz * 100 / Kapital;
+		cout << "Ihr Prozentsatz betraegt :" << Prozentsatz << endl;
+
+
+
+	} while (Kapital, Zinssatz <= 0);
+}
