@@ -3,14 +3,16 @@
 #include <random>
 using namespace std;
 
-constexpr int MIN = 1;
-constexpr int MAX = 6;
-
-constexpr int RAND_NUMS_TO_GENERATE = 1; // wie vile Nummern generiert werden sollen
 
 
 int wuerfel_sechs()
 {
+
+	constexpr int MIN = 1;
+	constexpr int MAX = 6;
+
+	constexpr int RAND_NUMS_TO_GENERATE = 1; // wie vile Nummern generiert werden sollen
+
 	random_device rd; // initialisieren der Random Generator Engine mit dem namen rd
 	default_random_engine eng(rd()); //Klasse um pseudo random-numbers zu erstellen - Verwendet inttialisierte Generator Engine rd
 	uniform_int_distribution<int> distr(MIN, MAX); // int zeigt Datentypen an welcher Random erstellt werden soll. MIN/MAX um einzugrenzen
@@ -19,8 +21,9 @@ int wuerfel_sechs()
 }
 
 
-void main()
-{
+void zahlenRaten() {
+
+
 	int spielerZahl;
 	int versuche = 0;
 
@@ -34,11 +37,6 @@ void main()
 	do
 	{
 		cin >> spielerZahl;
-		do {
-			if {
-
-		}
-		};
 		if (spielerZahl > randomNummer)
 		{
 			cout << "deine nummer ist zu gross" << endl;
@@ -50,11 +48,20 @@ void main()
 		if (versuche < 3) {
 			++versuche;
 		}
-		if (versuche == 3) { cout << "keine Versuche mehr! :/\ndeine Zahl wäre " << randomNummer << " gewesen." << endl; break;
+		if (versuche > 3) {
+			cout << "Keine Versuche mehr! :/\nDeine Zahl waere " << randomNummer << " gewesen." << endl; break;
 		};
 		if (spielerZahl == randomNummer) {
 			cout << "Glueckwunsch du hast gewonnen :)" << endl;
 		};
 
 	} while (spielerZahl != randomNummer);
+
 }
+
+void main()
+{
+	zahlenRaten();
+}
+
+
